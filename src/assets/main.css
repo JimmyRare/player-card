@@ -5,6 +5,12 @@
   --secondary: #094a5e;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   color: var(--gray-500);
   font-family: "Roboto", sans-serif;
