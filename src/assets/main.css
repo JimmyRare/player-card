@@ -1,0 +1,12 @@
+:root {
+  --gray-100: #ededed;
+  --gray-500: #444;
+  --primary: #f3cc15;
+  --secondary: #094a5e;
+}
+
+body {
+  color: var(--gray-500);
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
