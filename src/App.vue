@@ -1,23 +1,23 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
 import axios from "axios";
 
 import Card from "./components/Card.vue";
 
 const apiUrl = `${import.meta.env.VITE_API_URL}/PlayerData`;
-console.log(apiUrl, import.meta.env);
 
-let playerData = ref(null);
+const state = reactive({
+  playerData: null,
+});
 
 onMounted(async () => {
-  playerData.value = await fetchPlayerData();
-  console.log(playerData);
+  await fetchPlayerData();
 });
 
 async function fetchPlayerData() {
   try {
     const response = await axios.get(apiUrl);
-    return response.data;
+    state.playerData = response.data;
   } catch (error) {
     console.error("Error fetching player data", error);
   }
@@ -25,7 +25,11 @@ async function fetchPlayerData() {
 </script>
 
 <template>
-  <Card v-if="playerData" :player="playerData" />
+  <Card
+    v-if="state.playerData"
+    @generate="fetchPlayerData"
+    :player="state.playerData"
+  />
 </template>
 
 <style>

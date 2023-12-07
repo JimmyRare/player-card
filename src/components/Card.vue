@@ -6,25 +6,17 @@ import Pie from "./Pie.vue";
 import Rating from "./Rating.vue";
 
 const props = defineProps(["player"]);
-const {
-  name,
-  team,
-  imageUrl,
-  height,
-  weight,
-  year,
-  passing,
-  shooting,
-  dribbling,
-  rating,
-  season,
-} = props.player;
+let p = ref(props.player);
+
+watch(props, () => {
+  p = props.player;
+});
 </script>
 
 <template>
   <div class="card">
-    <h1 class="card-title">{{ name }}</h1>
-    <h2 class="card-team">{{ team }}</h2>
+    <h1 class="card-title">{{ p.name }}</h1>
+    <h2 class="card-team">{{ p.team }}</h2>
     <div class="card-bg__container">
       <img
         class="card-bg__image"
@@ -32,26 +24,26 @@ const {
         alt="Background image"
       />
     </div>
-    <PlayerImage :url="imageUrl" />
-    <BodyData :height="height" :weight="weight" :year="year" />
+    <PlayerImage :url="p.imageUrl" />
+    <BodyData :height="p.height" :weight="p.weight" :year="p.year" />
     <hr />
     <div class="card-pies">
-      <Pie :percentage="passing" :border="8" :title="'Passa'"></Pie>
-      <Pie :percentage="shooting" :border="8" :title="'Skjuta'"></Pie>
-      <Pie :percentage="dribbling" :border="8" :title="'Dribbla'"></Pie>
+      <Pie :percentage="p.passing" :border="8" :title="'Passa'"></Pie>
+      <Pie :percentage="p.shooting" :border="8" :title="'Skjuta'"></Pie>
+      <Pie :percentage="p.dribbling" :border="8" :title="'Dribbla'"></Pie>
     </div>
     <div class="card-season">
-      <div class="card-season__year">Säsong {{ season[0].year }}</div>
+      <div class="card-season__year">Säsong {{ p.season[0].year }}</div>
       <hr />
       <ul class="card-season__stats">
-        <li>{{ season[0].matches }} matcher</li>
-        <li>{{ season[0].goals }} mål</li>
-        <li>{{ season[0].assists }} assist</li>
+        <li>{{ p.season[0].matches }} matcher</li>
+        <li>{{ p.season[0].goals }} mål</li>
+        <li>{{ p.season[0].assists }} assist</li>
       </ul>
       <hr />
       <div class="card-bottom">
-        <Rating :rating="rating" />
-        <input type="button" value="Ändra" />
+        <Rating :rating="p.rating" />
+        <input @click="$emit('generate')" type="button" value="Slumpa" />
       </div>
     </div>
   </div>
