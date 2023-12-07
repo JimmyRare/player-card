@@ -21,15 +21,16 @@ const year = ref(1982);
 <style>
 .body-data {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   list-style: none;
+  margin: 0 1rem 0 calc(120px + 2rem);
+  padding: 0;
 }
 
 .body-data li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 1.5rem;
 }
 
 .body-icon {

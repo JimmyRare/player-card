@@ -50,6 +50,8 @@ const rating = ref(4);
   border-radius: 15px;
   box-shadow: 3px 5px 10px 0px rgba(0, 0, 0, 0.1);
   height: 600px;
+  margin: 0 auto;
+  max-width: 95%;
   overflow: hidden;
   position: relative;
   width: 450px;
@@ -126,8 +128,7 @@ input[type="button"] {
   cursor: pointer;
   font-size: 2rem;
   font-weight: 300 !important;
-  width: 180px;
   height: 60px;
-  flex-shrink: 0;
+  padding: 0 1.5rem;
 }
 </style>
