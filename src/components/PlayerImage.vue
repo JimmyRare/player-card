@@ -1,8 +1,10 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["url"]);
+</script>
 
 <template>
   <div class="player-image__container">
-    <img class="player-image" src="../assets/jimmy.jpg" alt="Player portrait" />
+    <img class="player-image" :src="props.url" alt="Player portrait" />
   </div>
 </template>
 

@@ -2,9 +2,7 @@
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
 
-const height = ref(185);
-const weight = ref(85);
-const year = ref(1982);
+const { height, weight, year } = defineProps(["height", "weight", "year"]);
 </script>
 
 <template>

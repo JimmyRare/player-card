@@ -1,17 +1,30 @@
 <script setup>
-import { ref } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
 import PlayerImage from "./PlayerImage.vue";
 import BodyData from "./BodyData.vue";
 import Pie from "./Pie.vue";
 import Rating from "./Rating.vue";
 
-const rating = ref(4);
+const props = defineProps(["player"]);
+const {
+  name,
+  team,
+  imageUrl,
+  height,
+  weight,
+  year,
+  passing,
+  shooting,
+  dribbling,
+  rating,
+  season,
+} = props.player;
 </script>
 
 <template>
   <div class="card">
-    <h1 class="card-title">Jimmy Engström</h1>
-    <h2 class="card-team">Torstorps IF</h2>
+    <h1 class="card-title">{{ name }}</h1>
+    <h2 class="card-team">{{ team }}</h2>
     <div class="card-bg__container">
       <img
         class="card-bg__image"
@@ -19,25 +32,25 @@ const rating = ref(4);
         alt="Background image"
       />
     </div>
-    <PlayerImage />
-    <BodyData />
+    <PlayerImage :url="imageUrl" />
+    <BodyData :height="height" :weight="weight" :year="year" />
     <hr />
     <div class="card-pies">
-      <Pie :percentage="65" :border="8" :title="'Passa'"></Pie>
-      <Pie :percentage="80" :border="8" :title="'Skjuta'"></Pie>
-      <Pie :percentage="87" :border="8" :title="'Dribbla'"></Pie>
+      <Pie :percentage="passing" :border="8" :title="'Passa'"></Pie>
+      <Pie :percentage="shooting" :border="8" :title="'Skjuta'"></Pie>
+      <Pie :percentage="dribbling" :border="8" :title="'Dribbla'"></Pie>
     </div>
     <div class="card-season">
-      <div class="card-season__year">Säsong 22-23</div>
+      <div class="card-season__year">Säsong {{ season[0].year }}</div>
       <hr />
       <ul class="card-season__stats">
-        <li>34 matcher</li>
-        <li>22 mål</li>
-        <li>12 assist</li>
+        <li>{{ season[0].matches }} matcher</li>
+        <li>{{ season[0].goals }} mål</li>
+        <li>{{ season[0].assists }} assist</li>
       </ul>
       <hr />
       <div class="card-bottom">
-        <Rating :rating="4" />
+        <Rating :rating="rating" />
         <input type="button" value="Ändra" />
       </div>
     </div>
