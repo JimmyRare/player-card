@@ -1,3 +1,8 @@
+# design
+![image](https://github.com/JimmyRare/player-card/assets/1134249/e43b1fdb-87d4-426d-816a-61293f594157)
+[Figma](https://www.figma.com/file/s3NfPTLCzxjUVjxXxtDXaj/Spelarkort?type=design&node-id=0%3A1&mode=design&t=qKAhXXKaqc66kqRg-1)
+
+
 # play-card
 
 This template should help get you started developing with Vue 3 in Vite.
